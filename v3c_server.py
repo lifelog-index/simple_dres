@@ -57,7 +57,7 @@ from dres_utils.function.schema import LoginQuery
 from dres_utils.function.logger import dres_logger
 session_info = None
 
-model = "LHE_clip" 
+model = "V3C_clip" 
 # MVK_clip
 
 server_endpoint = "https://vbs.videobrowsing.org"
