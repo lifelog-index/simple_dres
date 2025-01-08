@@ -61,6 +61,7 @@ def submit_text(interaction_id:str, submit_endpoint: str, list_endpoint: str, se
         )
     
     sessionid = sessionInfo.sessionId
+    dres_logger().debug(sessionInfo.username, f"Submit Text Ans: {content}")
     body = create_text_submission(text=content, collection_name=None)
 
     submit_endpoint = urljoin(submit_endpoint, evalID)
@@ -119,6 +120,7 @@ def submit_image(interaction_id:str, submit_endpoint: str, list_endpoint: str, s
     vid = image_path.split('/')[0]
     start = image_path.split('/')[1]
     end = start
+
     body = create_image_submission(
         mediaItemName=vid,
         start=start, 
@@ -127,6 +129,8 @@ def submit_image(interaction_id:str, submit_endpoint: str, list_endpoint: str, s
     )
     
     sessionid = sessionInfo.sessionId
+    dres_logger().debug(sessionInfo.username, f"Submit Image: {vid} | {start} | {end}")
+
     try:
         evalID, taskName = _getActiveEvaluationID(list_endpoint, sessionInfo)
     except:
